@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <h1>Random user generator </h1>
+        <div id="result" class="row">
+            <div class="col-lg-4">
+                <section class="card" style="max-width: 320px">
+  
+  <div id="result" class="card-body">
+    
+<button onclick="getUsers()" >Go somewhere</button>
+  </div>
+</section>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    
+</body>
+<script>
+     async function getUsers () {
+
+        try{ 
+            const response = await fetch("https://randomuser.me/api/")
+            console.log(response);
+            const allData =response.json()
+            console.log(allData);
+            allData.forEach(user=>{
+                result.innerHTML +=`
+                <h4 id="name" class="card-title">name${user.name.firts}</h4>
+                 <p class="card-text">email${user.email}</p>
+                 <p>location${user.location.city}</p>
+                `
+            })
+            
+
+
+
+
+        }catch(error){
+            console.log(error);
+            
+            
+        }
+
+    }
+
+
+
+
+ </script>
+
+ </html>
